@@ -50,12 +50,14 @@ source install/setup.bash
 ```
 
 ## ROS Domain
+
 For the current robot setup:
 ```bash
 export ROS_DOMAIN_ID=42
 ```
 
 ## Simulation
+
 ```bash
 source ~/srm-navigation/install/setup.bash
 export ROS_DOMAIN_ID=42
@@ -67,6 +69,7 @@ slam:=True
 ```
 
 ## Real Robot
+
 ```bash
 source ~/srm-navigation/install/setup.bash
 export ROS_DOMAIN_ID=42
@@ -78,23 +81,26 @@ use_robot_state_pub:=True
 ```
 
 ## Serial Bridge
+
 ```bash
 ros2 run srm_nav_task serial_bridge
+```
 
 Current serial configuration:
+
 - Device: /dev/ttyACM0
 - Baud rate: 115200
 - Update rate: 100 Hz
 - ROS topic: /red_standard_robot1/cmd_vel
-```
 
 ## Waypoint Navigation
+
 ```bash
 ros2 run srm_nav_task follow_waypoints
 ```
 
 ## Project Structure
-```markdown
+
 ```text
 srm-navigation/
 ├── pb2025_nav_bringup/
@@ -111,6 +117,7 @@ srm-navigation/
 ```
 
 ## Credits
+
 This project integrates and modifies selected components from
 PB2025 Sentry Navigation and other open-source ROS 2 projects.
 Original licenses, copyright notices, and attribution are retained
