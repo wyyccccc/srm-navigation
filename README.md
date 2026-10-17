@@ -47,11 +47,13 @@ This project includes the following integration and modifications:
 cd ~/srm-navigation
 colcon build
 source install/setup.bash
+```
 
 ## ROS Domain
 For the current robot setup:
 ```bash
 export ROS_DOMAIN_ID=42
+```
 
 ## Simulation
 ```bash
@@ -62,8 +64,10 @@ ros2 launch pb2025_nav_bringup \
 rm_navigation_simulation_launch.py \
 world:=rmuc_2025 \
 slam:=True
+```
 
 ## Real Robot
+```bash
 source ~/srm-navigation/install/setup.bash
 export ROS_DOMAIN_ID=42
 
@@ -71,6 +75,7 @@ ros2 launch pb2025_nav_bringup \
 rm_navigation_reality_launch.py \
 slam:=True \
 use_robot_state_pub:=True
+```
 
 ## Serial Bridge
 ```bash
@@ -81,9 +86,12 @@ Current serial configuration:
 - Baud rate: 115200
 - Update rate: 100 Hz
 - ROS topic: /red_standard_robot1/cmd_vel
+```
 
 ## Waypoint Navigation
+```bash
 ros2 run srm_nav_task follow_waypoints
+```
 
 ## Project Structure
 srm-navigation/
