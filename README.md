@@ -48,12 +48,12 @@ cd ~/srm-navigation
 colcon build
 source install/setup.bash
 
-##ROS Domain
+## ROS Domain
 For the current robot setup:
 ```bash
 export ROS_DOMAIN_ID=42
 
-##Simulation
+## Simulation
 ```bash
 source ~/srm-navigation/install/setup.bash
 export ROS_DOMAIN_ID=42
@@ -63,7 +63,7 @@ rm_navigation_simulation_launch.py \
 world:=rmuc_2025 \
 slam:=True
 
-##Real Robot
+## Real Robot
 source ~/srm-navigation/install/setup.bash
 export ROS_DOMAIN_ID=42
 
@@ -72,7 +72,7 @@ rm_navigation_reality_launch.py \
 slam:=True \
 use_robot_state_pub:=True
 
-##Serial Bridge
+## Serial Bridge
 ```bash
 ros2 run srm_nav_task serial_bridge
 
@@ -82,10 +82,10 @@ Current serial configuration:
 - Update rate: 100 Hz
 - ROS topic: /red_standard_robot1/cmd_vel
 
-##Waypoint Navigation
+## Waypoint Navigation
 ros2 run srm_nav_task follow_waypoints
 
-##Project Structure
+## Project Structure
 srm-navigation/
 ├── pb2025_nav_bringup/
 ├── point_lio/
@@ -99,7 +99,7 @@ srm-navigation/
 ├── srm_nav_task/
 └── README.md
 
-##Credits
+## Credits
 This project integrates and modifies selected components from
 PB2025 Sentry Navigation and other open-source ROS 2 projects.
 Original licenses, copyright notices, and attribution are retained
