@@ -94,7 +94,8 @@ ros2 run srm_nav_task follow_waypoints
 ```
 
 ## Project Structure
-```bash
+```markdown
+```text
 srm-navigation/
 ├── pb2025_nav_bringup/
 ├── point_lio/
