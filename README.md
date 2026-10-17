@@ -94,6 +94,7 @@ ros2 run srm_nav_task follow_waypoints
 ```
 
 ## Project Structure
+```bash
 srm-navigation/
 ├── pb2025_nav_bringup/
 ├── point_lio/
@@ -106,6 +107,7 @@ srm-navigation/
 ├── small_gicp_relocalization/
 ├── srm_nav_task/
 └── README.md
+```
 
 ## Credits
 This project integrates and modifies selected components from
