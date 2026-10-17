@@ -1,23 +1,17 @@
-build
+build/
+install/
+log/
 
-devel
+__pycache__/
+*.pyc
 
-install
+.vscode/
+.idea/
 
-log/*
-
-.catkin_workspace
-
-.vscode
-
-.cache
-
-__pycache__
-
-*~
+*.bag
+*.db3
 *.pcd
-*.gv
-*.pdf
 
-pb2025_nav_bringup/map/reality/*.yaml
-pb2025_nav_bringup/map/reality/*.pgm
+frames.pdf
+
+.DS_Store
