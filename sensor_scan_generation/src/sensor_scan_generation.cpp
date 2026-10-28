@@ -91,7 +91,7 @@ tf2::Transform SensorScanGenerationNode::getTransform(
 {
   try {
     auto transform_stamped = tf_buffer_->lookupTransform(
-      target_frame, source_frame, time, rclcpp::Duration::from_seconds(0.5));
+      target_frame, source_frame, tf2::TimePointZero);
     tf2::Transform transform;
     tf2::fromMsg(transform_stamped.transform, transform);
     return transform;

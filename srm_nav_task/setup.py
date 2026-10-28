@@ -27,6 +27,7 @@ setup(
         	'send_goal = srm_nav_task.send_goal:main',
         	'follow_waypoints = srm_nav_task.follow_waypoints:main',
                 'serial_bridge = srm_nav_task.serial_bridge:main',
+                'figure8_navigation = srm_nav_task.figure8_navigation:main',
     	],
 },
 )

@@ -18,7 +18,6 @@ class SerialBridge(Node):
         # 参数
         # =========================
 
-        # 真车时建议改成 /dev/serial/by-id/xxx
         self.serial_port = '/dev/ttyACM0'
 
         self.baudrate = 115200
@@ -30,8 +29,8 @@ class SerialBridge(Node):
         self.watchdog_timeout = 0.5
 
         # 第一次实车建议最大 0.2
-        self.max_vx = 0.2
-        self.max_vy = 0.2
+        self.max_vx = 0.05
+        self.max_vy = 0.05
         self.max_wz = 0.2
 
         # 当前速度
@@ -76,7 +75,7 @@ class SerialBridge(Node):
 
         self.subscription = self.create_subscription(
             Twist,
-            '/red_standard_robot1/cmd_vel',
+            '/cmd_vel_controller',
             self.cmd_vel_callback,
             10
         )
@@ -148,7 +147,7 @@ class SerialBridge(Node):
     # =========================
 
     def cmd_vel_callback(self, msg):
-
+        print('RX CMD:', msg.linear.x, msg.linear.y, msg.angular.z)
         vx = msg.linear.x
         vy = msg.linear.y
         wz = msg.angular.z
@@ -172,37 +171,15 @@ class SerialBridge(Node):
 
         # =========================
         # 坐标转换
-        # =========================
-        #
+        # =========================#
         # 协议说明：
         #
         # 上位机 vx -> 底盘 y
         # 上位机 vy -> 底盘 -x
         #
-        # 所以这里先做映射
-        #
-
-        chassis_vx = -vy
-        chassis_vy = vx
-
-        # wz 当前下位机可能不使用
-        chassis_wz = wz
-
-        self.vx = self.clamp(
-            chassis_vx,
-            self.max_vx
-        )
-
-        self.vy = self.clamp(
-            chassis_vy,
-            self.max_vy
-        )
-
-        self.wz = self.clamp(
-            chassis_wz,
-            self.max_wz
-        )
-
+        self.vx = -self.clamp(vx, self.max_vx)
+        self.vy = -self.clamp(vy, self.max_vy)
+        self.wz = self.clamp(wz, self.max_wz)
         self.last_cmd_time = time.time()
 
     # =========================
@@ -295,12 +272,12 @@ class SerialBridge(Node):
             vy,
             wz
         )
+        print('TX:', frame.hex(' ').upper(), 'vx=', vx, 'vy=', vy, 'wz=', wz)
 
         try:
 
-            self.ser.write(
-                frame
-            )
+            n=self.ser.write(frame)
+            print('WRITE LEN:', n)
 
         except Exception as e:
 
